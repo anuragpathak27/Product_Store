@@ -23,12 +23,16 @@ const Login = () => {
     setError("");
 
     try {
-      const response = await axios.post("http://localhost:5000/login", formData, {
-        withCredentials: true,
-      });
+      const response = await axios.post(
+        "http://localhost:5000/login",
+        formData,
+        {
+          withCredentials: true, // Ensures cookies are sent and received
+        }
+      );
 
-      // Redirect based on role
-      const redirectUrl = response.data.redirect;
+      // Redirect based on role or success
+      const redirectUrl = response.data.redirect || "/admin";
       navigate(redirectUrl);
     } catch (err) {
       setError(err.response?.data?.message || "Login failed. Please try again.");

@@ -40,7 +40,7 @@ const Register = () => {
       setError("");
       // Redirect to login page
       setTimeout(() => {
-        navigate("/login"); // Redirect after 2 seconds
+        navigate("/"); // Redirect after 2 seconds
       }, 2000);
     } catch (err) {
       setError(err.response?.data?.message || "An error occurred");
